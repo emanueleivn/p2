@@ -58,12 +58,12 @@ private static final long serialVersionUID = 1L;
 		this.cognome = cognome;
 	}
 	
-	public String getCitt‡() {
-		return citt‡;
+	public String getCitt√†() {
+		return citt√†;
 	}
 	
-	public void setCitt‡(String citt‡) {
-		this.citt‡ = citt‡;
+	public void setCitt√†(String citt√†) {
+		this.citt√† = citt√†;
 	}
 	
 	private String indirizzo;
@@ -72,5 +72,5 @@ private static final long serialVersionUID = 1L;
 	private String provincia;
 	private String nome;
 	private String cognome;
-	private String citt‡;
+	private String citt√†;
 }

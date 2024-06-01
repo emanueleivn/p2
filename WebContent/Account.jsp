@@ -61,8 +61,8 @@
 					<p><input type="text" name="prov" required/></p>
 				</div>
 				<div class="tableRow">
-					<p>Citt‡:</p>
-					<p><input type="text" name="citt‡" required/></p>
+					<p>Citt√†:</p>
+					<p><input type="text" name="cittÔøΩ" required/></p>
 				</div>
 				<div class="tableRow">
 					<p></p>
@@ -77,7 +77,7 @@
 					<li>Indirizzo: <%=spedizione.getIndirizzo() %></li>
 					<li>Cap: <%=spedizione.getCap() %></li>
 					<li>Provincia: <%=spedizione.getProvincia() %></li>
-					<li>Citt‡: <%=spedizione.getCitt‡() %></li>
+					<li>Citt√†: <%=spedizione.getCitt√†() %></li>
 					<li><a href="account?action=removeS"><button>Rimuovi</button></a></li>
 				</ul>
 				

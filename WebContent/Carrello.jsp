@@ -23,7 +23,7 @@
 		<tr>
 			<th></th>
 			<th>Nome</th>
-			<th>Quantità</th>
+			<th>Quantitï¿½</th>
 			<th>Prezzo totale</th>
 			<th></th>
 		</tr>
@@ -38,8 +38,8 @@
 					<input type="hidden" name="Id" value="<%=itemcart.getId()%>">
 					<input type="hidden" name="page" value="Carrello.jsp">
 					<select name="qnt" id="qnt">
-						<%for(int i = 0; i < itemcart.getProdotto().getQuantità();i++) {%>
-						<option value="<%=i+1%>" <%if( (i+1)==itemcart.getQuantitàCarrello()){ %> selected="selected" <%} %>> <%=i+1%> </option> <%} %>
+						<%for(int i = 0; i < itemcart.getProdotto().getQuantitÃ ();i++) {%>
+						<option value="<%=i+1%>" <%if( (i+1)==itemcart.getQuantitÃ Carrello()){ %> selected="selected" <%} %>> <%=i+1%> </option> <%} %>
 						
 					</select>
 					<input type="submit" value="update">

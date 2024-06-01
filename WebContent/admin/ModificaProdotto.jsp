@@ -53,8 +53,8 @@
 			<p><input type="text" name="dataUscita" value="<%=bean.getDataUscita() %>" required></p>
 		</div>
 		<div class="tableRow">
-			<p>Quantit‡:</p>
-			<p><input type="number" name="quantit‡" value="<%=bean.getQuantit‡() %>" required></p>
+			<p>Quantit√†:</p>
+			<p><input type="number" name="quantitÔøΩ" value="<%=bean.getQuantit√†() %>" required></p>
 		</div>
 		<div class="tableRow">
 			<p>Immagine:</p>
@@ -69,7 +69,7 @@
 			<p><input type="text" name="genere" value="<%=bean.getGenere() %>" required></p>
 		</div>
 		<div class="tableRow">	
-			<p>Descrizione dettagliata:</p>
+			<p>Descrizione dettagliata:</p> 
 			<p><input type="text" name="descDett" value="<%=bean.getDescrizioneDettagliata()%>"></p>
 		</div>
 		<div class="tableRow">

@@ -45,7 +45,7 @@ public class ComposizioneDao implements ComposizioneDaoInterfaccia{
 			preparedStatement = connection.prepareStatement(insertSQL);
 			preparedStatement.setInt(1, composizione.getIdOrdine());
 			preparedStatement.setInt(2, composizione.getIdProdotto());
-			preparedStatement.setInt(3, composizione.getQuantit‡());
+			preparedStatement.setInt(3, composizione.getQuantit√†());
 			preparedStatement.setString(4, composizione.getIva());
 			preparedStatement.setDouble(5, composizione.getPrezzoTotale());
 			
@@ -88,7 +88,7 @@ public class ComposizioneDao implements ComposizioneDaoInterfaccia{
 				ComposizioneBean composizione = new ComposizioneBean();
 				composizione.setIdOrdine(rs.getInt("ID_ORDINE"));
 				composizione.setIdProdotto(rs.getInt("ID_PRODOTTO"));
-				composizione.setQuantit‡(rs.getInt("QUANTITA"));
+				composizione.setQuantit√†(rs.getInt("QUANTITA"));
 				composizione.setIva(rs.getString("IVA"));
 				composizione.setPrezzoTotale(rs.getDouble("PREZZO_TOT"));
 				composizioni.add(composizione);

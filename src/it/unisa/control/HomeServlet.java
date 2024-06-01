@@ -20,44 +20,58 @@ import it.unisa.model.ProdottoDao;
 @WebServlet("/home")
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
- 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	private static final String[] FORBIDDEN_FILES = { "META-INF/context.xml", "WEB-INF/web.xml" };
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		ProdottoDao dao = new ProdottoDao();
-		
+
 		ArrayList<ArrayList<ProdottoBean>> categorie = new ArrayList<>();
 		String redirectedPage = request.getParameter("page");
-		
-		try {
-			ArrayList<ProdottoBean> PS5 = dao.doRetrieveByPiattaforma("PlayStation 5");
-			ArrayList<ProdottoBean> XboxSeries = dao.doRetrieveByPiattaforma("Xbox Series");
-			ArrayList<ProdottoBean> Switch = dao.doRetrieveByPiattaforma("Nintendo Switch");
-			ArrayList<ProdottoBean> PS4 = dao.doRetrieveByPiattaforma("PlayStation 4");
-			ArrayList<ProdottoBean> Xone = dao.doRetrieveByPiattaforma("Xbox One");
-			
-			categorie.add(PS5);
-			categorie.add(XboxSeries);
-			categorie.add(Switch);
-			categorie.add(PS4);
-			categorie.add(Xone);
+		if (isForbiddenPage(redirectedPage)) {
+			response.sendRedirect("Home.jsp");
+		} else {
 
-			request.getSession().setAttribute("categorie", categorie);
-			
+			try {
+				ArrayList<ProdottoBean> PS5 = dao.doRetrieveByPiattaforma("PlayStation 5");
+				ArrayList<ProdottoBean> XboxSeries = dao.doRetrieveByPiattaforma("Xbox Series");
+				ArrayList<ProdottoBean> Switch = dao.doRetrieveByPiattaforma("Nintendo Switch");
+				ArrayList<ProdottoBean> PS4 = dao.doRetrieveByPiattaforma("PlayStation 4");
+				ArrayList<ProdottoBean> Xone = dao.doRetrieveByPiattaforma("Xbox One");
 
-			
-		}catch(SQLException e) {
-			e.printStackTrace();
+				categorie.add(PS5);
+				categorie.add(XboxSeries);
+				categorie.add(Switch);
+				categorie.add(PS4);
+				categorie.add(Xone);
+
+				request.getSession().setAttribute("categorie", categorie);
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/" + redirectedPage);
+			dispatcher.forward(request, response);
 		}
-		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/" + redirectedPage);
-		dispatcher.forward(request, response);
 	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		doGet(request, response);
 	}
 
+	private boolean isForbiddenPage(String page) {
+		if (page == null) {
+			return true;
+		}
+		for (String forbidden : FORBIDDEN_FILES) {
+			if (page.contains(forbidden)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
