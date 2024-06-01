@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `cliente`;
 CREATE TABLE `cliente` (
   `email` varchar(100) NOT NULL,
   `username` varchar(100) DEFAULT NULL,
-  `pwd` varchar(5000) DEFAULT NULL,
+  `pwd` varchar(128) DEFAULT NULL,
   `nome` varchar(100) NOT NULL,
   `cognome` varchar(100) NOT NULL,
   `data_nascita` date NOT NULL,
@@ -49,8 +49,8 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES ('liviovona24@gmail.com','admin','admin','livio','vona','2000-03-22',1,'1111222233334444','Via G.Luigi X','12345'),('marco@gmail.com','user','user','marco','rossi','2000-02-23',0,'1111222233334444','Via G.Luigi X','12345');
-/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
+
+INSERT INTO `cliente` VALUES ('liviovona24@gmail.com','admin',SHA2('admin', 512),'livio','vona','2000-03-22',1,'1111222233334444','Via G.Luigi X','12345'),('marco@gmail.com','user',SHA2('user', 512),'marco','rossi','2000-02-23',0,'1111222233334444','Via G.Luigi X','12345');*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
