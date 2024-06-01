@@ -39,19 +39,19 @@ public class AccountServlet extends HttpServlet {
         IndirizzoSpedizioneDao daoSped = new IndirizzoSpedizioneDao();
         MetodoPagamentoBean pag = new MetodoPagamentoBean();
         MetodoPagamentoDao daoPag = new MetodoPagamentoDao();
-        String action = request.getParameter("action");
+        String action = sanitizeInput(request.getParameter("action"));
 
-        String nome = request.getParameter("nome");
-        String cognome = request.getParameter("cognome");
-        String telefono = request.getParameter("tel");
-        String città = request.getParameter("città");
-        String ind = request.getParameter("ind");
-        String cap = request.getParameter("cap");
-        String prov = request.getParameter("prov");
+        String nome = sanitizeInput(request.getParameter("nome"));
+        String cognome = sanitizeInput(request.getParameter("cognome"));
+        String telefono = sanitizeInput(request.getParameter("tel"));
+        String città = sanitizeInput(request.getParameter("città"));
+        String ind = sanitizeInput(request.getParameter("ind"));
+        String cap = sanitizeInput(request.getParameter("cap"));
+        String prov = sanitizeInput(request.getParameter("prov"));
 
-        String tit = request.getParameter("tit");
-        String numC = request.getParameter("numC");
-        String scad = request.getParameter("scad");
+        String tit = sanitizeInput(request.getParameter("tit"));
+        String numC = sanitizeInput(request.getParameter("numC"));
+        String scad = sanitizeInput(request.getParameter("scad"));
 
         try {
             if (action != null) {
@@ -131,6 +131,13 @@ public class AccountServlet extends HttpServlet {
             page = page.replace("../", "");
         }
         return page;
+    }
+
+    private String sanitizeInput(String input) {
+        if (input == null) {
+            return null;
+        }
+        return input.replaceAll("[<>\"'%;)(&+]", "");
     }
 }
 
